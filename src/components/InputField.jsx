@@ -1,9 +1,14 @@
 import React from 'react';
 
-const InputField = ({ label, ...props }) => (
+const InputField = ({ label, value, onChange, type }) => (
   <div className="mb-4">
-    <label className="block text-white">{label}</label>
-    <input {...props} className="w-full p-2 rounded-md" />
+    <label className="block text-white mb-1">{label}</label>
+    <input 
+      type={type} 
+      value={value} 
+      onChange={onChange} 
+      className="w-full p-2 rounded-md text-black"
+    />
   </div>
 );
 
