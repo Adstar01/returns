@@ -27,7 +27,7 @@ const PriceTable = ({ type }) => {
             value: coin.current_price,
           })));
         } else if (type === 'Stocks') {
-          const stockSymbols = ['IBM'];
+          const stockSymbols = ['IBM','NVDA'];
           const stockData = [];
 
           for (let symbol of stockSymbols) {
@@ -36,7 +36,7 @@ const PriceTable = ({ type }) => {
                 function: 'TIME_SERIES_INTRADAY',
                 symbol: symbol,
                 interval: '5min',
-                apikey: 'V3TEZMZ1AXKUUY0U',
+                apikey: 'import.meta.env.VITE_ALPHA_VANTAGE_API_KEY',
               },
             });
             const timeSeries = response.data['Time Series (5min)'];
@@ -56,7 +56,7 @@ const PriceTable = ({ type }) => {
         } else if (type === 'Gold') {
           response = await axios.get('https://www.goldapi.io/api/XAU/INR', {
             headers: {
-              'x-access-token': 'goldapi-5dzroslzky7y6f-io',
+              'x-access-token': 'import.meta.env.VITE_GOLD_API_KEY',
               'Content-Type': 'application/json',
             },
           });
